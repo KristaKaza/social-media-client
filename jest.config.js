@@ -1,5 +1,8 @@
-// jest.config.js
 module.exports = {
-  testEnvironment: 'jsdom',
-  testMatch: ['<rootDir>/src/**/*.test.js']
+  moduleNameMapper: {
+    '@core/(.*)': '<rootDir>/src/app/core/$1'
+  },
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  testPathIgnorePatterns: ['<rootDir>/cypress/']
 }
