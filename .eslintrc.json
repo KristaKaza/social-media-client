@@ -30,6 +30,7 @@
   ],
   "ignorePatterns": ["jest.config.js"],
   "rules": {
-    "no-unused-vars": "off"
+    "no-unused-vars": "error",
+    "cypress/no-unnecessary-waiting": "off"
   }
 }
