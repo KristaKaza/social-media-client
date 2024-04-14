@@ -1,3 +1,5 @@
+import { validEmail, validPassword } from '../support/testCredentials.js'
+
 describe('Logout Test', () => {
   it('should log in with valid credentials, then log out again', () => {
     cy.visit(`https://kristakaza.github.io/social-media-client/`)
@@ -6,8 +8,8 @@ describe('Logout Test', () => {
       '#registerForm > div.modal-footer > button.btn-outline-success'
     ).click()
     cy.wait(1000)
-    cy.get(`#loginEmail`).type(`torber51739@stud.noroff.no`)
-    cy.get(`#loginPassword`).type(`testtest`)
+    cy.get(`#loginEmail`).type(validEmail)
+    cy.get(`#loginPassword`).type(validPassword)
     cy.wait(1000)
     cy.get(`button.btn-success`).contains('Login').click()
     cy.wait(2000)
@@ -16,17 +18,5 @@ describe('Logout Test', () => {
     cy.get('#registerForm > div.modal-footer > button.btn-outline-success')
       .contains('Login')
       .should('exist')
-  })
-})
-
-or
-describe('Logout function', () => {
-  it('Logs in the user and log out.', () => {
-    cy.OpenLogInForm()
-    cy.loginWithValidUser()
-    cy.IsLoggedIn()
-    cy.wait(1000)
-    cy.get('button[data-auth="logout"]').click()
-    cy.IsLoggedOut()
   })
 })
