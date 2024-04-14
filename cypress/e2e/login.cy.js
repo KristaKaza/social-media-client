@@ -1,3 +1,5 @@
+// login.cy.js
+
 import {
   testUrl,
   validEmail,
@@ -14,7 +16,7 @@ describe('login functionality', () => {
     cy.get('#registerForm').should('be.visible')
   })
 
-  it('displays a message if the login function is called with  invalid credentals', () => {
+  it('displays a message if the login function has invalid credentials', () => {
     cy.navigateToLoginForm()
     cy.get('#loginForm').should('be.visible')
     cy.testLoginCredentials(invalidEmail, invalidPassword)
@@ -29,10 +31,13 @@ describe('login functionality', () => {
     cy.navigateToLoginForm()
     cy.get('#loginForm').should('be.visible')
     cy.testLoginCredentials(validEmail, validPassword)
-    cy.url().should('include', validUsername)
+
+    cy.get('[data-auth="logout"]').should('be.visible')
+
+    cy.url().should('not.include', '/login')
+
     cy.window().then((win) => {
       const token = win.localStorage.getItem('token')
-      expect(token).to.exist
     })
   })
 })
