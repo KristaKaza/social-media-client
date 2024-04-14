@@ -1,4 +1,4 @@
-import { logout } from '../js/api/auth/index.js'
+import { logout } from '../auth/logout.js'
 
 //MOCK: localStorage
 const localStorageMock = {
