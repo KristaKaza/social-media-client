@@ -1,6 +1,6 @@
 describe('Login Fail Test', () => {
   it('should give alert when logging in with invalid credentials', () => {
-    cy.visit(`https://KristaKaza.github.io/social-media-client-ca/`)
+    cy.visit(`https://kristakaza.github.io/social-media-client/`)
     cy.wait(1000)
     cy.get(
       '#registerForm > div.modal-footer > button.btn-outline-success'

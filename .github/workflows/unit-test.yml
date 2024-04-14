@@ -1,5 +1,5 @@
 name: Automated Unit Testing
-on: 
+on:
   pull_request:
   workflow_dispatch:
 
@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout under $GITHUB_WORKSPACE
-        uses: actions/checkout@main
+        uses: actions/checkout@master
 
       - name: Set up NodeJS
         uses: actions/setup-node@v1
@@ -21,4 +21,4 @@ jobs:
         run: npm install
 
       - name: Run Tests
-        run: npm run test:unit
+        run: npm run test-unit
