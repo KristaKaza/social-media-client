@@ -19,5 +19,5 @@ Cypress.Commands.add('login', (url, email, password) => {
   cy.get('#loginEmail').type(email)
   cy.get('#loginPassword').type(password)
   cy.get('button[type=submit]').click()
-  cy.wait(1000)
+  cy.wait(2000)
 })

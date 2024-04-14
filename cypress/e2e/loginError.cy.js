@@ -1,18 +1,22 @@
-describe('Login Fail Test', () => {
-  it('should give alert when logging in with invalid credentials', () => {
-    cy.visit(`https://kristakaza.github.io/social-media-client/`)
-    cy.wait(1000)
-    cy.get(
-      '#registerForm > div.modal-footer > button.btn-outline-success'
-    ).click()
-    cy.wait(1000)
-    cy.get(`#loginEmail`).type(`krikaz9483@noroff.no`)
-    cy.get(`#loginPassword`).type(`password`)
-    cy.wait(1000)
-    cy.get(`button.btn-success`).contains('Login').click()
+import {
+  testUrl,
+  invalidEmail,
+  invalidPassword
+} from '.././support/testCredentials.js'
+
+describe('login functionality', () => {
+  beforeEach(() => {
+    cy.visit(testUrl)
     cy.wait(500)
-    cy.on('window:alert', (alertText) => {
-      expect(alertText).to.contain(
+    cy.get('#registerForm').should('be.visible')
+  })
+
+  it('displays a message if the login function has invalid credentials', () => {
+    cy.navigateToLoginForm()
+    cy.get('#loginForm').should('be.visible')
+    cy.testLoginCredentials(invalidEmail, invalidPassword)
+    cy.on('window:alert', (alertMessage) => {
+      expect(alertMessage).to.contain(
         'Either your username was not found or your password is incorrect'
       )
     })
